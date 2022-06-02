@@ -55,3 +55,6 @@ def bezout(polynomial: Polynomial):
                 roots.append(x[0])
                 roots.append(x[1])
     return roots
+
+
+print(bezout(Polynomial(1, 3, 7, -21, -26)))  # [-1, 2, (-2+3j), (-2-3j)]
