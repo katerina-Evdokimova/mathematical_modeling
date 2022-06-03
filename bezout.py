@@ -1,22 +1,25 @@
+from math import sqrt
+
+import numpy as np
+
 from core import Polynomial
 from trinomial import QuadraticTrinomial
+from scipy.optimize import root
 
 
 def _decision(divisors, polynomial: Polynomial):
-    for i in divisors:
-        if polynomial(i) == 0.0:
-            return i
-        elif polynomial(-i) == 0.0:
-            return -i
+    result = root(polynomial, np.array([0.]))
+    if abs(np.round(result.x, 8)[0]) in divisors:
+        return np.round(result.x, 8)[0]
     return None
 
 
 def _divisors(n):
     result = set()
-    for i in range(1, int(n ** 0.5) + 1):
+    for i in range(1, int(sqrt(n)) + 1):
         if n % i == 0:
-            result.add(i)
-            result.add(n // i)
+            result.add(float(i))
+            result.add(float(n // i))
     return list(result)
 
 
@@ -38,22 +41,21 @@ def bezout(polynomial: Polynomial):
     roots = []
     if len(polynomial) != 4:
         return 'error length polynomial < 4'
-    if 0 < polynomial[4] != 1:
+    if polynomial[4] != 1:
         polynomial /= polynomial[4]
-    if polynomial[4] == 0:
-        return ZeroDivisionError("Can't divide a Polynomial by 0")
-    else:
+    # if polynomial[4] == 0:
+    #     return ZeroDivisionError("Can't divide a Polynomial by 0")
         # print(polynomial)
-        root, polynomial2 = root_polynomial(polynomial)
+    root, polynomial2 = root_polynomial(polynomial)
+    roots.append(root)
+    if polynomial2:
+        root, polynomial3 = root_polynomial(polynomial2)
         roots.append(root)
-        if polynomial2:
-            root, polynomial3 = root_polynomial(polynomial2)
-            roots.append(root)
-            if polynomial3:
-                polynomial4 = QuadraticTrinomial(polynomial3[2], polynomial3[1], polynomial3[0])
-                x = polynomial4.complex_roots
-                roots.append(x[0])
-                roots.append(x[1])
+        if polynomial3:
+            polynomial4 = QuadraticTrinomial(polynomial3[2], polynomial3[1], polynomial3[0])
+            x = polynomial4.complex_roots
+            roots.append(x[0])
+            roots.append(x[1])
     return roots
 
 

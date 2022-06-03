@@ -12,33 +12,33 @@ def solve(polynomial: Polynomial):
     a3 * x^3 + a2 * x^2 + a1 * x + a0 = 0
     """
     if len(polynomial) != 3:
-        return 'error length polynomial < 4'
-    if 0 < polynomial[3] != 1:
+        return 'error length polynomial < 3'
+    if polynomial[3] != 1:
         polynomial /= polynomial[3]
-    if polynomial[3] == 0:
-        return ZeroDivisionError("Can't divide a Polynomial by 0")
+    # Cardano's method
+    const0 = polynomial[2] * CONST_1_3
+    const = polynomial[2] * const0
+
+    p = polynomial[1] - const
+    q = polynomial[0] - const0 * (polynomial[1] - 2 * const * CONST_1_3)
+
+    const2 = q * 0.5
+    const3 = p * CONST_1_3
+    u = const2 * const2 + const3 * const3 * const3
+    pow_ = math.sqrt(u)
+
+    if u >= 0:
+        determinator = pow(pow_, CONST_1_3)
+        k0 = -const2 + determinator
+        k1 = -const2 - determinator
     else:
-        # Cardano's method
-        p = polynomial[1] - (polynomial[2] * polynomial[2]) * CONST_1_3
-        q = polynomial[0] - polynomial[1] * polynomial[2] * CONST_1_3 + (
-                    2 * polynomial[2] * polynomial[2] * polynomial[2]) * CONST_1_3 * CONST_1_3 * CONST_1_3
-        u = (q * 0.5) * (q * 0.5) + pow((p * CONST_1_3), 3)
+        k0 = pow((-const2 + pow_), CONST_1_3)
+        k1 = pow((-const2 - pow_), CONST_1_3)
 
-        numerator = -q * 0.5
-        if u >= 0:
-            determinator = pow(u, 0.5 * CONST_1_3)
-            k0 = numerator + determinator
-            k1 = numerator - determinator
-        else:
-            pow_ = pow(u, 0.5)
-            k0 = pow((numerator + pow_), CONST_1_3)
-            k1 = pow((numerator - pow_), CONST_1_3)
-
-        y0 = k0 + k1
-        y1 = OMEGA1 * k0 + OMEGA2 * k1
-        y2 = OMEGA2 * k0 + OMEGA1 * k1
-        const = (polynomial[2] * CONST_1_3)
-        return y0 - const, y1 - const, y2 - const
+    y0 = k0 + k1
+    y1 = OMEGA1 * k0 + OMEGA2 * k1
+    y2 = OMEGA2 * k0 + OMEGA1 * k1
+    return y0 - const0, y1 - const0, y2 - const0
 
 
-print(solve(Polynomial(1, 6, 9, 0)))
+print(solve(Polynomial(2, 12, 18, 0)))
