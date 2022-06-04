@@ -86,6 +86,4 @@ def bezout(polynomial: Polynomial):
 
 
 print(bezout(Polynomial(1, 3, 7, -21, -26)))  # [-1, 2, (-2+3j), (-2-3j)]
-a = QuadraticTrinomial(1, 4, 5)
 
-print(a.complex_roots)

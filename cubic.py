@@ -2,8 +2,9 @@ import math
 
 from core import Polynomial
 
-OMEGA1 = (-1 + 1j * math.sqrt(3)) * 0.5
-OMEGA2 = (-1 - 1j * math.sqrt(3)) * 0.5
+x = 1j * math.sqrt(3)
+OMEGA1 = (-1 + x) * 0.5
+OMEGA2 = (-1 - x) * 0.5
 CONST_1_3 = 1 / 3.0
 
 

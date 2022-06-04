@@ -4,6 +4,8 @@ from itertools import chain
 from math import inf
 import string
 
+from method2 import _pow
+
 
 class PolynomialError(Exception):
     """Raised when a Polynomial encounters an error."""
@@ -552,32 +554,33 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
             Polynomial(working, from_monomials=True)
         )
 
-    def __pow__(self, power, modulo=None):
-        """Return self ** power or pow(self, other, modulo)."""
-        if not isinstance(power, int):
-            raise ValueError(
-                "Can't call Polynomial() ** x with a non-integer type."
-            )
-
-        if power < 0:
-            raise ValueError(
-                "Polynomial can only be raised to a non-negative power."
-            )
-
-        if power == 0:
-            result = Constant(1)
-        elif power % 2 == 1:
-            result = Polynomial(self)
-            if power > 1:
-                result *= (self ** (power // 2)) ** 2
-        else:
-            if power == 2:
-                result = Polynomial(self)
-            else:
-                result = self ** (power // 2)
-            result *= result
-
-        return result % modulo if modulo is not None else result
+    # def __pow__(self, power, modulo=None):
+    #     """Return self ** power or pow(self, other, modulo)."""
+    #     if not isinstance(power, int):
+    #         raise ValueError(
+    #             "Can't call Polynomial() ** x with a non-integer type."
+    #         )
+    #
+    #     if power < 0:
+    #         raise ValueError(
+    #             "Polynomial can only be raised to a non-negative power."
+    #         )
+    #
+    #     if power == 0:
+    #         result = Constant(1)
+    #     elif power % 2 == 1:
+    #         result = Polynomial(self)
+    #         if power > 1:
+    #             const = _pow(self, power // 2)
+    #             result *= const * const
+    #     else:
+    #         if power == 2:
+    #             result = Polynomial(self)
+    #         else:
+    #             result = _pow(self, power // 2)
+    #         result *= result
+    #
+    #     return result % modulo if modulo is not None else result
 
     def __ipow__(self, other):
         """Return self **= power."""
