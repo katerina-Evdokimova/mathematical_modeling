@@ -85,8 +85,7 @@ def bezout(polynomial: Polynomial):
     return roots
 
 
-a = Polynomial(1, 3, 7, -21, -26)
-a *= 3
-a /= 3
-print(a // Polynomial(1, -1))
 print(bezout(Polynomial(1, 3, 7, -21, -26)))  # [-1, 2, (-2+3j), (-2-3j)]
+a = QuadraticTrinomial(1, 4, 5)
+
+print(a.complex_roots)

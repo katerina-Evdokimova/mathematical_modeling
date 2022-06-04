@@ -1,6 +1,6 @@
 """This module defines different types of trinomials and their methods."""
 
-from polynomial.core import (
+from core import (
     Polynomial,
     Monomial,
     Constant,
