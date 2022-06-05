@@ -7,7 +7,7 @@ from methods.checking_polynomial import checking
 Bezout`s theorem states that the remainder of the division of the polynomial P(x) by the binomial x - a is equal to P(a).
  For us, it is not the theorem itself that is important, but the consequence of it :
 
-If the number _a_ is the root of the polynomial P(x), then the polynomial 
+If the number a is the root of the polynomial P(x), then the polynomial 
 P(x) = a0*x^n + a1*x^(n - 1) + a2*x^(n - 2) + ... + an is divisible without remainder by the binomial x - a.
 """
 
@@ -45,7 +45,7 @@ def _divisors(n):
     return list(result)
 
 
-# The method allows you to find the roots of a polynomial based on the Buzout method.
+# The method allows you to find the roots of a polynomial based on the Bezout method.
 # (The description is given in readme.md )
 # The input is: polynomial the data type is a Polynomial.
 # The output is: a root (a floating-point number);
@@ -64,7 +64,7 @@ def root_polynomial(polynomial: Polynomials):
             return None, None
 
 
-# This method implements the solution of the polynomial using the Buzout method.
+# This method implements the solution of the polynomial using the Bezout method.
 # The input is: polynomial the data type is a Polynomial.
 # The output is: a list of roots
 def bezout(polynomial: Polynomials):
