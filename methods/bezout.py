@@ -1,14 +1,10 @@
 from math import sqrt
 
-import numpy as np
-
-from scipy.optimize import root
-
 from methods.Polynomials import Polynomials, QuadraticTrinomials
 from methods.checking_polynomial import checking
 
 """
-Bezu's theorem states that the remainder of the division of the polynomial P(x) by the binomial x - a is equal to P(a).
+Bezout`s theorem states that the remainder of the division of the polynomial P(x) by the binomial x - a is equal to P(a).
  For us, it is not the theorem itself that is important, but the consequence of it :
 
 If the number _a_ is the root of the polynomial P(x), then the polynomial 
@@ -57,7 +53,7 @@ def _divisors(n):
 def root_polynomial(polynomial: Polynomials):
     if sum(polynomial) == 0:
         return 1, polynomial // Polynomials(1, -1)
-    elif sum([i for i in polynomial if i % 2 == 0]) == sum([i for i in polynomial if i % 2 != 0]):
+    elif sum([i for i in polynomial if float.fromhex(str(i)) % 2 == 0]) == sum([i for i in polynomial if float.fromhex(str(i)) % 2 != 0]):
         return -1, polynomial // Polynomials(1, 1)
     else:
         divisors = _divisors(abs(polynomial[0]))
@@ -68,16 +64,16 @@ def root_polynomial(polynomial: Polynomials):
             return None, None
 
 
-# This method implements the solution of the polynomial using the Buzu method.
+# This method implements the solution of the polynomial using the Buzout method.
 # The input is: polynomial the data type is a Polynomial.
 # The output is: a list of roots
 def bezout(polynomial: Polynomials):
     roots = []
+
     flag, result = checking(polynomial, 4)
     if not flag:
         return result
-    else:
-        polynomial = result
+
     root, polynomial2 = root_polynomial(polynomial)
     roots.append(root)
     if polynomial2:
