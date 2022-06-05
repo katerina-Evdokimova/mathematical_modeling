@@ -1,6 +1,7 @@
 import math
 
 from methods import Polynomials
+from methods.checking_polynomial import checking
 
 x = 1j * math.sqrt(3)
 OMEGA1 = (-1 + x) * 0.5
@@ -13,11 +14,11 @@ CONST_1_3 = 1 / 3.0
 # The input is: a third degree polynomial (the data type is a polynomial).
 # The output is: a list of roots.
 def solve(polynomial: Polynomials):
-    if len(polynomial) != 3:
-        return 'error length polynomial < 3'
-    if polynomial[3] != 1:
-        const = 1 / polynomial[3]
-        polynomial *= const
+    flag, result = checking(polynomial, 3)
+    if not flag:
+        return result
+    else:
+        polynomial = result
     # Cardano's method
     const0 = polynomial[2] * CONST_1_3
     const = polynomial[2] * const0

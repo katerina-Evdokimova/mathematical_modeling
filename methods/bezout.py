@@ -5,6 +5,7 @@ import numpy as np
 from scipy.optimize import root
 
 from methods.Polynomials import Polynomials, QuadraticTrinomials
+from methods.checking_polynomial import checking
 
 """
 Bezu's theorem states that the remainder of the division of the polynomial P(x) by the binomial x - a is equal to P(a).
@@ -72,14 +73,11 @@ def root_polynomial(polynomial: Polynomials):
 # The output is: a list of roots
 def bezout(polynomial: Polynomials):
     roots = []
-    if len(polynomial) != 4:
-        return 'error length polynomial != 4'
-    if polynomial[4] != 1:
-        const = 1 / polynomial[4]
-        polynomial *= const
-    # if polynomial[4] == 0:
-    #     return ZeroDivisionError("Can't divide a Polynomial by 0")
-    # print(polynomial)
+    flag, result = checking(polynomial, 4)
+    if not flag:
+        return result
+    else:
+        polynomial = result
     root, polynomial2 = root_polynomial(polynomial)
     roots.append(root)
     if polynomial2:

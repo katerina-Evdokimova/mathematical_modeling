@@ -5,7 +5,7 @@ from math import inf
 import string
 
 # from method2 import _pow
-
+'''Some part of this code is borrowed from the github: allexks'''
 
 class PolynomialErrors(Exception):
     """Raised when a Polynomial encounters an error."""

@@ -1,6 +1,7 @@
 from cmath import sqrt
 
 from methods.Polynomials import Polynomials, QuadraticTrinomials
+from methods.checking_polynomial import checking
 from methods.cubic import solve
 
 
@@ -22,17 +23,18 @@ def _pow(a, k):
 # Input data: A polynomial with integer coefficients of the fourth degree.
 # Output: list of roots
 def method_cardano_descartes(polynomial: Polynomials):
-    if len(polynomial) != 4:
-        return 'error length polynomial != 4'
-    if polynomial[4] != 1:
-        const = 1 / polynomial[4]
-        polynomial *= const
+    flag, result = checking(polynomial, 4)
+    if not flag:
+        return result
+    else:
+        polynomial = result
     const = polynomial[3] * 0.125
     const2 = 3 * polynomial[3] * const
     p = polynomial[2] - const2
     r = polynomial[1] - polynomial[3] * (polynomial[2] * 0.5 + polynomial[3] * const)
     q = polynomial[0] - polynomial[3] * 0.25 * (polynomial[1] + polynomial[3] * 0.25 * (polynomial[2] - const2 * 0.5))
     A = solve(Polynomials(1, 2 * p, p * p - 4 * r, q * q))[0]
+    print(f'AAAAAAAA - {A}')
     a = sqrt(A).real
     # a - не может быть нулем исходя из самого метода.
     summand1 = p + a * a
