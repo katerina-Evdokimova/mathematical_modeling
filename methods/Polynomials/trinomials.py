@@ -1,7 +1,7 @@
 """This module defines different types of Trinomials and their methods."""
 from math import sqrt
 
-from Polynomials import FixedTermPolynomials, Monomials, Polynomials, FixedDegreePolynomials, Constants
+from methods.Polynomials import FixedTermPolynomials, Monomials, Polynomials, FixedDegreePolynomials, Constants
 
 
 class Trinomials(FixedTermPolynomials, valid_term_counts=(0, 1, 2, 3)):

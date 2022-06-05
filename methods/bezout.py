@@ -4,7 +4,7 @@ import numpy as np
 
 from scipy.optimize import root
 
-from Polynomials import Polynomials, QuadraticTrinomials
+from methods.Polynomials import Polynomials, QuadraticTrinomials
 
 """
 
@@ -66,9 +66,10 @@ def root_polynomial(polynomial: Polynomials):
 def bezout(polynomial: Polynomials):
     roots = []
     if len(polynomial) != 4:
-        return 'error length polynomial < 4'
+        return 'error length polynomial != 4'
     if polynomial[4] != 1:
-        polynomial /= polynomial[4]
+        const = 1 / polynomial[4]
+        polynomial *= const
     # if polynomial[4] == 0:
     #     return ZeroDivisionError("Can't divide a Polynomial by 0")
     # print(polynomial)
@@ -85,5 +86,5 @@ def bezout(polynomial: Polynomials):
     return roots
 
 
-print(bezout(Polynomials(1, 3, 7, -21, -26)))  # [-1, 2, (-2+3j), (-2-3j)]
+
 

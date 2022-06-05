@@ -1,7 +1,9 @@
 from cmath import sqrt
 
-from Polynomials import Polynomials, QuadraticTrinomials
-from cubic import solve
+# from Polynomials import Polynomials, QuadraticTrinomials
+# from cubic import solve
+from methods.Polynomials import Polynomials, QuadraticTrinomials
+from methods.cubic import solve
 
 
 def _pow(a, k):
@@ -14,7 +16,12 @@ def _pow(a, k):
     return p
 
 
-def method_cardano(polynomial: Polynomials):
+def method_cardano_descartes(polynomial: Polynomials):
+    if len(polynomial) != 4:
+        return 'error length polynomial != 4'
+    if polynomial[4] != 1:
+        const = 1 / polynomial[4]
+        polynomial *= const
     const = polynomial[3] * 0.125
     const2 = 3 * polynomial[3] * const
     p = polynomial[2] - const2

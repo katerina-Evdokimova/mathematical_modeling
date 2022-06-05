@@ -1,6 +1,6 @@
 import math
 
-from Polynomials.cores import Polynomials
+from methods import Polynomials
 
 x = 1j * math.sqrt(3)
 OMEGA1 = (-1 + x) * 0.5
@@ -9,13 +9,12 @@ CONST_1_3 = 1 / 3.0
 
 
 def solve(polynomial: Polynomials):
-    """ Numeric solutions of a cubic equation
-    a3 * x^3 + a2 * x^2 + a1 * x + a0 = 0
-    """
+
     if len(polynomial) != 3:
         return 'error length polynomial < 3'
     if polynomial[3] != 1:
-        polynomial /= polynomial[3]
+        const = 1 / polynomial[3]
+        polynomial *= const
     # Cardano's method
     const0 = polynomial[2] * CONST_1_3
     const = polynomial[2] * const0
@@ -42,4 +41,4 @@ def solve(polynomial: Polynomials):
     return y0 - const0, y1 - const0, y2 - const0
 
 
-print(solve(Polynomials(2, 12, 18, 0)))
+# print(solve(Polynomials(2, 12, 18, 0)))
