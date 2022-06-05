@@ -1,7 +1,7 @@
 from cmath import sqrt
-from core import Polynomial
+
 from cubic import solve
-from trinomial import QuadraticTrinomial
+from Polynomials.trinomials import QuadraticTrinomial
 
 
 def _pow(a, k):
@@ -14,7 +14,7 @@ def _pow(a, k):
     return p
 
 
-def method_cardano(polynomial: Polynomial):
+def method_cardano(polynomial: Polynomials):
     const = polynomial[3] * 0.125
     const2 = 3 * polynomial[3] * const
     p = polynomial[2] - const2

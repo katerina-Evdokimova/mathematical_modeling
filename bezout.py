@@ -1,10 +1,11 @@
-from math import sqrt, nan
+from math import sqrt
 
 import numpy as np
 
-from core import Polynomial
-from trinomial import QuadraticTrinomial
 from scipy.optimize import root
+
+from Polynomials.cores import Polynomials
+from Polynomials.trinomials import QuadraticTrinomial
 
 """
 
@@ -22,7 +23,7 @@ from scipy.optimize import root
 #                            (the data type is a Polynomial.)
 # The output is: one root of a given polynomial is obtained.
 #         If the root is not found, None is returned.
-def _decision(divisors, polynomial: Polynomial):
+def _decision(divisors, polynomial: Polynomials):
     result = np.round(root(polynomial, np.array([0.])).x, 8)[0]
     if abs(result) in divisors:
         return result
@@ -46,16 +47,16 @@ def _divisors(n):
 # The input is: polynomial the data type is a Polynomial.
 # The output is: a root (a floating-point number);
 #                a polynomial with a reduced degree obtained by dividing by x - root (the data type is a polynomial).
-def root_polynomial(polynomial: Polynomial):
+def root_polynomial(polynomial: Polynomials):
     if sum(polynomial) == 0:
-        return 1, polynomial // Polynomial(1, -1)
+        return 1, polynomial // Polynomials(1, -1)
     elif sum([i for i in polynomial if i % 2 == 0]) == sum([i for i in polynomial if i % 2 != 0]):
-        return -1, polynomial // Polynomial(1, 1)
+        return -1, polynomial // Polynomials(1, 1)
     else:
         divisors = _divisors(abs(polynomial[0]))
         root = _decision(divisors, polynomial)
         if root:
-            return root, polynomial // Polynomial(1, -root)
+            return root, polynomial // Polynomials(1, -root)
         else:
             return None, None
 
@@ -63,7 +64,7 @@ def root_polynomial(polynomial: Polynomial):
 # This method implements the solution of the polynomial using the Buzu method.
 # The input is: polynomial the data type is a Polynomial.
 # The output is: a list of roots
-def bezout(polynomial: Polynomial):
+def bezout(polynomial: Polynomials):
     roots = []
     if len(polynomial) != 4:
         return 'error length polynomial < 4'
@@ -85,5 +86,5 @@ def bezout(polynomial: Polynomial):
     return roots
 
 
-print(bezout(Polynomial(1, 3, 7, -21, -26)))  # [-1, 2, (-2+3j), (-2-3j)]
+print(bezout(Polynomials(1, 3, 7, -21, -26)))  # [-1, 2, (-2+3j), (-2-3j)]
 

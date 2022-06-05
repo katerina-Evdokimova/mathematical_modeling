@@ -38,7 +38,7 @@ def _extract_polynomial(method):
     """
 
     def decorated(self, other):
-        if isinstance(other, Polynomial):
+        if isinstance(other, Polynomials):
             return method(self, other)
         if isinstance(other, (int, float, complex)):
             return method(self, Constant(other))
@@ -141,7 +141,7 @@ def _sub(lhs, rhs):
     return _to_terms(res)
 
 
-class Polynomial:
+class Polynomials:
     """Implements a single-variable mathematical polynomial."""
 
     @_accepts_many_arguments
@@ -180,7 +180,7 @@ class Polynomial:
     @classmethod
     def zero_instance(cls):
         """Return the Polynomial which is 0."""
-        return Polynomial()
+        return Polynomials()
 
     def _trim(self):
         """Trims self._vector to length. Keeps constant terms."""
@@ -231,7 +231,7 @@ class Polynomial:
                 factors[i] = (factors[i - 1] // i) * factorial_term
                 factorial_term += 1
 
-        return Polynomial(
+        return Polynomials(
             [c * x for c, x
              in zip(self, reversed(factors))]
         )
@@ -245,9 +245,9 @@ class Polynomial:
     def _indefinite_integral(self):
         """Return the polynomial object which is the integral of self."""
         if not self:
-            return Polynomial()
+            return Polynomials()
 
-        return Polynomial(
+        return Polynomials(
             [c / x for c, x in
              zip(self, range(self.degree + 1, 0, -1))] + [0]
         )
@@ -353,7 +353,7 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
     def __repr__(self):
         """Return repr(self)."""
         if not self:
-            return "Polynomial()"
+            return "Polynomials()"
         terms = ', '.join([repr(ak) for ak in self])
         return "Polynomial({0})".format(terms)
 
@@ -399,7 +399,7 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
     def __eq__(self, other):
         """Return self == other.
 
-        self == 0 <==> self == Polynomial()
+        self == 0 <==> self == Polynomials()
         """
         if other == 0:
             return not self
@@ -410,7 +410,7 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
     def __ne__(self, other):
         """Return self != other.
 
-        self != 0 <==> self != Polynomial()
+        self != 0 <==> self != Polynomials()
         """
         if other == 0:
             return bool(self)
@@ -534,7 +534,7 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
             remainder = self._vector[:other.degree]
             for i, v in enumerate(vec):
                 vec[i] = v / other.a
-            return Polynomial(vec[::-1]), Polynomial(remainder[::-1])
+            return Polynomials(vec[::-1]), Polynomials(remainder[::-1])
 
         working = self.terms
         wd0 = _degree(working)
@@ -550,8 +550,8 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
             vec.append((val, wd - other_deg if wd0 != -inf else 0))
 
         return (
-            Polynomial(vec, from_monomials=True),
-            Polynomial(working, from_monomials=True)
+            Polynomials(vec, from_monomials=True),
+            Polynomials(working, from_monomials=True)
         )
 
     # def __pow__(self, power, modulo=None):
@@ -642,7 +642,7 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
             return set(item).issubset(self.terms)
         if isinstance(item, set):
             return item.issubset(self.terms)
-        if isinstance(item, Polynomial):
+        if isinstance(item, Polynomials):
             return set(item.terms).issubset(self.terms)
         raise ValueError(
             "Can not check {0} for membership. A two-tuple, list of "
@@ -665,7 +665,7 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
         if self.terms_are_valid(terms):
             self.terms = terms
             return self
-        return Polynomial(terms, from_monomials=True)
+        return Polynomials(terms, from_monomials=True)
 
 
 def _setvalue_decorator(error, _terms_are_valid, _fn):
@@ -680,7 +680,7 @@ def _setvalue_decorator(error, _terms_are_valid, _fn):
     return method
 
 
-class FixedDegreePolynomial(Polynomial):
+class FixedDegreePolynomial(Polynomials):
     """This Polynomial must maintain its degree."""
 
     def __init_subclass__(cls, **kwargs):
@@ -710,7 +710,7 @@ class FixedDegreePolynomial(Polynomial):
         )
 
 
-class FixedTermPolynomial(Polynomial):
+class FixedTermPolynomial(Polynomials):
     """This Polynomial must maintain the number of terms."""
 
     def __init_subclass__(cls, **kwargs):

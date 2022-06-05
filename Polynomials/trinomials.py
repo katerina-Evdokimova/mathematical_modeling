@@ -1,7 +1,7 @@
 """This module defines different types of trinomials and their methods."""
 
-from core import (
-    Polynomial,
+from cores import (
+    Polynomials,
     Monomial,
     Constant,
     FixedDegreePolynomial,
@@ -29,7 +29,7 @@ class Trinomial(FixedTermPolynomial, valid_term_counts=(0, 1, 2, 3)):
         if not monomial3:
             monomial3 = Monomial(1, 3)
         args = [monomial1, monomial2, monomial3]
-        Polynomial.__init__(self, args, from_monomials=True)
+        Polynomials.__init__(self, args, from_monomials=True)
 
     def __repr__(self):
         """Return repr(self)."""
@@ -50,7 +50,7 @@ class QuadraticTrinomial(FixedDegreePolynomial, Trinomial, valid_degrees=2):
         """Initialize the trinomial as ax^2 + bx + c."""
         if a == 0:
             raise ValueError("Object not a quadratic trinomial since a==0!")
-        Polynomial.__init__(self, a, b, c)
+        Polynomials.__init__(self, a, b, c)
 
     @property
     def discriminant(self):
@@ -85,8 +85,8 @@ class QuadraticTrinomial(FixedDegreePolynomial, Trinomial, valid_degrees=2):
         """Return (a, (x-x_0), (x-x_1)), where x_0 and x_1 are the roots."""
         roots = self.complex_roots
         return (Constant(self.a),
-                Polynomial([1, -roots[0]]),
-                Polynomial([1, -roots[1]]))
+                Polynomials([1, -roots[0]]),
+                Polynomials([1, -roots[1]]))
 
     @property
     def real_factors(self):

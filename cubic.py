@@ -1,6 +1,6 @@
 import math
 
-from core import Polynomial
+from Polynomials.cores import Polynomials
 
 x = 1j * math.sqrt(3)
 OMEGA1 = (-1 + x) * 0.5
@@ -8,7 +8,7 @@ OMEGA2 = (-1 - x) * 0.5
 CONST_1_3 = 1 / 3.0
 
 
-def solve(polynomial: Polynomial):
+def solve(polynomial: Polynomials):
     """ Numeric solutions of a cubic equation
     a3 * x^3 + a2 * x^2 + a1 * x + a0 = 0
     """
@@ -42,4 +42,4 @@ def solve(polynomial: Polynomial):
     return y0 - const0, y1 - const0, y2 - const0
 
 
-print(solve(Polynomial(2, 12, 18, 0)))
+print(solve(Polynomials(2, 12, 18, 0)))
