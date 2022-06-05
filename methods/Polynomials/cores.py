@@ -278,6 +278,7 @@ class Polynomials:
             _vector = _trim(_vector)
         self._vector = _vector
 
+
     @property
     def Monomialss(self):
         """Return a list with all terms in the form of Monomialss.

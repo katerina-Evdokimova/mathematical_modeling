@@ -7,12 +7,17 @@ from scipy.optimize import root
 from methods.Polynomials import Polynomials, QuadraticTrinomials
 
 """
+Bezu's theorem states that the remainder of the division of the polynomial P(x) by the binomial x - a is equal to P(a).
+ For us, it is not the theorem itself that is important, but the consequence of it :
 
+If the number _a_ is the root of the polynomial P(x), then the polynomial 
+P(x) = a0*x^n + a1*x^(n - 1) + a2*x^(n - 2) + ... + an is divisible without remainder by the binomial x - a.
 """
 
+'''https://en.wikipedia.org/wiki/Newton%27s_method
+To optimize the root finding, the Newton method was chosen'''
 
-# NEED TO FIX
-# A code with a stable error is required
+
 # ------------------------------------------------------------------------------------------------------------
 # This method allows you to determine whether there is a necessary root in the found list
 # The input receives:
@@ -23,9 +28,11 @@ from methods.Polynomials import Polynomials, QuadraticTrinomials
 # The output is: one root of a given polynomial is obtained.
 #         If the root is not found, None is returned.
 def _decision(divisors, polynomial: Polynomials):
-    result = np.round(root(polynomial, np.array([0.])).x, 8)[0]
-    if abs(result) in divisors:
-        return result
+    for i in divisors:
+        if i == i - polynomial(i) / polynomial.nth_derivative()(i):
+            return i
+        if -i == -i - polynomial(-i) / polynomial.nth_derivative()(-i):
+            return -i
     return None
 
 
@@ -84,7 +91,3 @@ def bezout(polynomial: Polynomials):
             roots.append(x[0])
             roots.append(x[1])
     return roots
-
-
-
-
