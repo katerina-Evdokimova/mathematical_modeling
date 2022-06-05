@@ -4,8 +4,7 @@ import numpy as np
 
 from scipy.optimize import root
 
-from Polynomials.cores import Polynomials
-from Polynomials.trinomials import QuadraticTrinomial
+from Polynomials import Polynomials, QuadraticTrinomials
 
 """
 
@@ -79,7 +78,7 @@ def bezout(polynomial: Polynomials):
         root, polynomial3 = root_polynomial(polynomial2)
         roots.append(root)
         if polynomial3:
-            polynomial4 = QuadraticTrinomial(polynomial3[2], polynomial3[1], polynomial3[0])
+            polynomial4 = QuadraticTrinomials(polynomial3[2], polynomial3[1], polynomial3[0])
             x = polynomial4.complex_roots
             roots.append(x[0])
             roots.append(x[1])

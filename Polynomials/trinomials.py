@@ -1,35 +1,29 @@
-"""This module defines different types of trinomials and their methods."""
-
-from cores import (
-    Polynomials,
-    Monomial,
-    Constant,
-    FixedDegreePolynomial,
-    FixedTermPolynomial
-)
+"""This module defines different types of Trinomials and their methods."""
 from math import sqrt
 
+from Polynomials import FixedTermPolynomials, Monomials, Polynomials, FixedDegreePolynomials, Constants
 
-class Trinomial(FixedTermPolynomial, valid_term_counts=(0, 1, 2, 3)):
-    """Implements single-variable mathematical trinomials."""
+
+class Trinomials(FixedTermPolynomials, valid_term_counts=(0, 1, 2, 3)):
+    """Implements single-variable mathematical Trinomials."""
 
     def __init__(self,
-                 monomial1=None,
-                 monomial2=None,
-                 monomial3=None):
-        """Initialize the trinomial with 3 monomials.
+                 Monomials1=None,
+                 Monomials2=None,
+                 Monomials3=None):
+        """Initialize the Trinomials with 3 Monomials.
 
         The arguments can also be 2-tuples in the form:
             (coefficient, degree)
         """
-        if not monomial1:
-            monomial1 = Monomial(1, 1)
-        if not monomial2:
-            monomial2 = Monomial(1, 2)
-        if not monomial3:
-            monomial3 = Monomial(1, 3)
-        args = [monomial1, monomial2, monomial3]
-        Polynomials.__init__(self, args, from_monomials=True)
+        if not Monomials1:
+            Monomials1 = Monomials(1, 1)
+        if not Monomials2:
+            Monomials2 = Monomials(1, 2)
+        if not Monomials3:
+            Monomials3 = Monomials(1, 3)
+        args = [Monomials1, Monomials2, Monomials3]
+        Polynomials.__init__(self, args, from_Monomialss=True)
 
     def __repr__(self):
         """Return repr(self)."""
@@ -37,19 +31,19 @@ class Trinomial(FixedTermPolynomial, valid_term_counts=(0, 1, 2, 3)):
         assert len(terms) == 3
         t1, t2, t3 = terms
         return (
-            "Trinomial(Monomial({0}, {1}), Monomial({2}, {3}), "
-            "Monomial({4}, {5}))"
+            "Trinomials(Monomials({0}, {1}), Monomials({2}, {3}), "
+            "Monomials({4}, {5}))"
             .format(*t1, *t2, *t3)
         )
 
 
-class QuadraticTrinomial(FixedDegreePolynomial, Trinomial, valid_degrees=2):
-    """Implements quadratic trinomials and their related methods."""
+class QuadraticTrinomials(FixedDegreePolynomials, Trinomials, valid_degrees=2):
+    """Implements quadratic Trinomialss and their related methods."""
 
     def __init__(self, a=1, b=1, c=1):
-        """Initialize the trinomial as ax^2 + bx + c."""
+        """Initialize the Trinomials as ax^2 + bx + c."""
         if a == 0:
-            raise ValueError("Object not a quadratic trinomial since a==0!")
+            raise ValueError("Object not a quadratic Trinomials since a==0!")
         Polynomials.__init__(self, a, b, c)
 
     @property
@@ -84,7 +78,7 @@ class QuadraticTrinomial(FixedDegreePolynomial, Trinomial, valid_degrees=2):
     def complex_factors(self):
         """Return (a, (x-x_0), (x-x_1)), where x_0 and x_1 are the roots."""
         roots = self.complex_roots
-        return (Constant(self.a),
+        return (Constants(self.a),
                 Polynomials([1, -roots[0]]),
                 Polynomials([1, -roots[1]]))
 
@@ -98,6 +92,6 @@ class QuadraticTrinomial(FixedDegreePolynomial, Trinomial, valid_degrees=2):
     def __repr__(self):
         """Return repr(self)."""
         return (
-            "QuadraticTrinomial({0!r}, {1!r}, {2!r})"
+            "QuadraticTrinomials({0!r}, {1!r}, {2!r})"
             .format(self.a, self.b, self.c)
         )

@@ -1,2 +1,2 @@
-from .cores import Polynomials
-from .trinomials import QuadraticTrinomial
+from .cores import Polynomials, FixedTermPolynomials, Monomials, FixedDegreePolynomials, Constants
+from .trinomials import QuadraticTrinomials

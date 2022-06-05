@@ -1,7 +1,7 @@
 from cmath import sqrt
 
+from Polynomials import Polynomials, QuadraticTrinomials
 from cubic import solve
-from Polynomials.trinomials import QuadraticTrinomial
 
 
 def _pow(a, k):
@@ -20,7 +20,7 @@ def method_cardano(polynomial: Polynomials):
     p = polynomial[2] - const2
     r = polynomial[1] - polynomial[3] * (polynomial[2] * 0.5 + polynomial[3] * const)
     q = polynomial[0] - polynomial[3] * 0.25 * (polynomial[1] + polynomial[3] * 0.25 * (polynomial[2] - const2 * 0.5))
-    A = solve(Polynomial(1, 2 * p, p * p - 4 * r, q * q))[0]
+    A = solve(Polynomials(1, 2 * p, p * p - 4 * r, q * q))[0]
     a = sqrt(A).real
     # a - не может быть нулем исходя из самого метода.
     summand1 = p + a * a
@@ -28,6 +28,6 @@ def method_cardano(polynomial: Polynomials):
     b = (summand1 - summand2) * 0.5
     c = (summand1 + summand2) * 0.5
     const = polynomial[3] * 0.25
-    roots1 = [i + const for i in QuadraticTrinomial(1, a, b).complex_roots]
-    roots2 = [i + const for i in QuadraticTrinomial(1, -a, c).complex_roots]
+    roots1 = [i + const for i in QuadraticTrinomials(1, a, b).complex_roots]
+    roots2 = [i + const for i in QuadraticTrinomials(1, -a, c).complex_roots]
     return [roots1, roots2]
