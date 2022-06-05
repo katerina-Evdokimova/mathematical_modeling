@@ -8,8 +8,11 @@ OMEGA2 = (-1 - x) * 0.5
 CONST_1_3 = 1 / 3.0
 
 
+# The method implements the Cardano method for polynomials of the third degree with integer coefficients.
+# (More information about the Cardano method is written in readme.md)
+# The input is: a third degree polynomial (the data type is a polynomial).
+# The output is: a list of roots.
 def solve(polynomial: Polynomials):
-
     if len(polynomial) != 3:
         return 'error length polynomial < 3'
     if polynomial[3] != 1:
@@ -39,6 +42,3 @@ def solve(polynomial: Polynomials):
     y1 = OMEGA1 * k0 + OMEGA2 * k1
     y2 = OMEGA2 * k0 + OMEGA1 * k1
     return y0 - const0, y1 - const0, y2 - const0
-
-
-# print(solve(Polynomials(2, 12, 18, 0)))

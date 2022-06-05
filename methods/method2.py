@@ -1,11 +1,12 @@
 from cmath import sqrt
 
-# from Polynomials import Polynomials, QuadraticTrinomials
-# from cubic import solve
 from methods.Polynomials import Polynomials, QuadraticTrinomials
 from methods.cubic import solve
 
 
+# Function for finding the degree.
+# The input is: an integer (a), which must be raised to a power; an integer (k) is a power.
+# The input is
 def _pow(a, k):
     p = 1
     while k > 0:
@@ -16,6 +17,10 @@ def _pow(a, k):
     return p
 
 
+# A modern method for solving equations of the fourth degree, based on the method of Cardano and Descartes.
+# (More information about the Cardano method is written in readme.md)
+# Input data: A polynomial with integer coefficients of the fourth degree.
+# Output: list of roots
 def method_cardano_descartes(polynomial: Polynomials):
     if len(polynomial) != 4:
         return 'error length polynomial != 4'
