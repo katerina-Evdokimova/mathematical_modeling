@@ -4,7 +4,8 @@ from itertools import chain
 from math import inf
 import string
 
-'''Some part of this code is borrowed from the github: allexks'''
+'''Some part of this code is borrowed from the github: allexks
+   https://github.com/allexks/py-polynomial/blob/master/polynomial/core.py'''
 
 class PolynomialErrors(Exception):
     """Raised when a Polynomial encounters an error."""
