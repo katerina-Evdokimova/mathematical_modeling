@@ -8,7 +8,7 @@ from cubic import solve
 from method2 import method_cardano_descartes
 
 """
-Рассмотрим 3 случая и в каждом из них ещё 2
+Рассмотрим 3 случая
 1).1 Пусть будет коэффициент при x^3 = rand()
     Тогда имеем общий вид ax^3 + bx^2 + cx + d = 0
     И корни выглядят, как a(x-x0)(x-x1)(x-x2) =>
