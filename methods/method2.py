@@ -11,7 +11,6 @@ from methods.checking_polynomial import checking
 # Input data: A polynomial with integer coefficients of the fourth degree.
 # Output: list of roots
 def method_cardano_descartes(polynomial: Polynomials):
-
     flag, result = checking(polynomial, 4)
     if not flag:
         return result
@@ -39,8 +38,8 @@ def method_cardano_descartes(polynomial: Polynomials):
     summand1 = p + a * a
     summand2 = q / a
 
-    b = (summand1 - summand2) * 0.5
     c = (summand1 + summand2) * 0.5
+    b = c - summand2
 
     roots1 = [i + const3 for i in QuadraticTrinomials(1, a, b).complex_roots]
     roots2 = [i + const3 for i in QuadraticTrinomials(1, -a, c).complex_roots]

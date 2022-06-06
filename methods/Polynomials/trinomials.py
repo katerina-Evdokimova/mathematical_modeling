@@ -33,7 +33,7 @@ class Trinomials(FixedTermPolynomials, valid_term_counts=(0, 1, 2, 3)):
         return (
             "Trinomials(Monomials({0}, {1}), Monomials({2}, {3}), "
             "Monomials({4}, {5}))"
-            .format(*t1, *t2, *t3)
+                .format(*t1, *t2, *t3)
         )
 
 
@@ -62,7 +62,8 @@ class QuadraticTrinomials(FixedDegreePolynomials, Trinomials, valid_degrees=2):
         D = b * b - 4 * a * c
         sqrtD = sqrt(D) if D >= 0 else sqrt(-D) * 1j
         a = a * 2
-        return (-b + sqrtD) / a, (-b - sqrtD) / a
+        const = 1 / a
+        return (-b + sqrtD) * const, (-b - sqrtD) * const
 
     @property
     def real_roots(self):
@@ -93,5 +94,5 @@ class QuadraticTrinomials(FixedDegreePolynomials, Trinomials, valid_degrees=2):
         """Return repr(self)."""
         return (
             "QuadraticTrinomials({0!r}, {1!r}, {2!r})"
-            .format(self.a, self.b, self.c)
+                .format(self.a, self.b, self.c)
         )
