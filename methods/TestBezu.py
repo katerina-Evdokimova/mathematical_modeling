@@ -4,6 +4,8 @@ from random import randint
 import array
 from bezout import bezout
 from Polynomials.cores import Polynomials
+from cubic import solve
+from method2 import method_cardano_descartes
 
 """
 Рассмотрим 3 случая и в каждом из них ещё 2
@@ -150,80 +152,124 @@ class MyTestCase(unittest.TestCase):
 
     def testData5(self): #5
         self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
+    
+    def testData2(self): #6
+        self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
 
-    def testData2(self): #2
+    def testData2(self):  #7
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData3(self):  #8
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData4(self):  #9
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData5(self):  #10
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData2(self):  #11
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData2(self):  #12
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData3(self):  #13
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData4(self):  #14
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData5(self):  #15
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+
+    def testData2(self):  #16
+        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        
+    def testData6(self): #17
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData7(self): #18
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData8(self): #19
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData9(self): #20
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData10(self): #21
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData6(self): #22
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData7(self): #23
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData8(self): #24
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData9(self): #25
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData10(self): #26
+        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData6(self): #27
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData7(self): #28
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData8(self): #29
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData9(self): #30
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData10(self): #31
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData6(self): #32
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData7(self): #33
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData8(self): #34
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData9(self): #35
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData10(self): #36
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        
+    def testData2(self): #37
         self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
 
-    def testData3(self): #3
+    def testData3(self): #38
         self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
 
-    def testData4(self): #4
+    def testData4(self): #39
         self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
 
-    def testData5(self): #5
+    def testData5(self): #40
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        
+    def testData2(self): #41
         self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
 
-    def testData6(self): #6
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+    def testData3(self): #42
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
 
-    def testData7(self): #7
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+    def testData4(self): #43
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
 
-    def testData8(self): #8
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData9(self): #9
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData10(self): #10
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData6(self): #6
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData7(self): #7
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData8(self): #8
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData9(self): #9
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-    def testData10(self): #10
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def testData5(self): #44
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        
 
 
 if __name__ == '__main__':
