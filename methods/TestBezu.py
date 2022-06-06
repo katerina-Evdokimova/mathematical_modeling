@@ -131,6 +131,29 @@ def rand4Coeffs(coeffics):
 #    d = a(-x1x2x3 - x0x2x3 - x0x1x3 - x0x1x2) = -a(x1x2x3 + x0(x2(x3+x1)+x1x3))
 #    e = a * x0 * x1 * x2 * x3
 
+
+def rand4CoeffsWithI(coeffics):
+    for i in range(2):
+        coeffics[i] = randint(-100, 100)  # получаем 2 рандомных корня и комплексное число
+    a = randint(-100, 100)
+    coeffics.insert(0,a)
+    iy1 = complex(0,randint(-100,100))
+    coeffics[1] = coeffics[1] + iy1
+    coeffics[2] = coeffics[2] - iy1
+    iy1 = complex(0,randint(-100,100))
+
+#   [0, 1,  2 ]
+#   [a, x1, x2]
+#   [0, 1,     2,     3,     4    ]
+#   [a, x0+iy1, x0-iy1, x1+iy2, x1-iy2]
+#   a = rand()
+#   b = -2a(x0+x1)
+#   c = a(x1^2+iy2^2+x0x1+x0^2+iy1^2)
+#   d = -2a(x1^2x0 +iy2^2x0 + x1x0^2 +x1iy1^2)
+#   e = a(x1^2x0^2 +iy2^2x0^2 + x1^2iy1^2 +iy1^2iy2^2)
+
+
+
 class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.bezu = bezout(Polynomial(coeffics))  # создаём объект и инициализируем его коэффициентами
@@ -150,6 +173,18 @@ class MyTestCase(unittest.TestCase):
     def testData5(self): #5
         self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
 
+    def testData2(self): #2
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+
+    def testData3(self): #3
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+
+    def testData4(self): #4
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+
+    def testData5(self): #5
+        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+
     def testData6(self): #6
         self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
 
@@ -164,6 +199,50 @@ class MyTestCase(unittest.TestCase):
 
     def testData10(self): #10
         self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData6(self): #6
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData7(self): #7
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData8(self): #8
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData9(self): #9
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+    def testData10(self): #10
+        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
