@@ -96,15 +96,15 @@ def rand3CoeffsWithI(coeffics):
     coeffics.insert(0,a)
     iy = complex(0,randint(-100,100))
     coeffics[2] = coeffics[2] + iy
-    coeffics[3] = coeffics[3] - iy
+    coeffics[3] = coeffics[3] + coeffics[2] - iy
     b = (-1) * a * (2 * coeffics[2] + coeffics[1])  # b
     c = a * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3] + 2 * coeffics[1] * coeffics[2])  # c
     d = (-1) * a * coeffics[1] * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3])  # d
     return [a,b,c,d]
 
 
-#   [0 , 1 ,2, 3]
-#   [a, x0,x1,iy]
+#   [0 , 1 ,2   , 3]
+#   [a, x0,x1+iy,x1-iy]
 #    d = ax1^2x0+ay^2x0 = -ax0(x1^2+y^2)
 #    a = const
 #    c = ax1^2+ay^2+2ax0x1 = a(x1^2 + y^2 + 2x0x1)
@@ -118,11 +118,10 @@ def rand4Coeffs(coeffics):
     a = randint(-100,100)
     coeffics.insert(0, a)
     b = (-1)* a * (coeffics[1] + coeffics[2] + coeffics[3] + coeffics[4])  # b
-    c = a * (coeffics[1] * coeffics[2] + coeffics[2] * coeffics[3] + coeffics[1] * coeffics[3])  # c
-    d = (-1) * a * coeffics[1] * coeffics[2] * coeffics[3]  # d
-    return [a,b,c,d]
-
-
+    c = a * (coeffics[4] * (coeffics[3] + coeffics[2]) + coeffics[1](coeffics[4] + coeffics[3]+coeffics[2]) + coeffics[2]*coeffics[3])  # c
+    d = (-1) * a *(coeffics[2] * coeffics[3] * coeffics[4] + coeffics[1](coeffics[2](coeffics[4]+coeffics[2]) + coeffics[2]*coeffics[3]))  # d
+    e = a * coeffics[0]*coeffics[1]*coeffics[2]*coeffics[3]*coeffics[4]
+    return [a,b,c,d,e]
 
 #    [0, 1,  2,  3 , 4 ]
 #    [a, x0, x1, x2, x3]
@@ -131,6 +130,29 @@ def rand4Coeffs(coeffics):
 #    c = a(x2x3 + x1x3 + x1x2 + x0x3 + x0x2 + x0x1) = a(x3(x2+x1) + x0(x3+x2+x1)+ x1x2)
 #    d = a(-x1x2x3 - x0x2x3 - x0x1x3 - x0x1x2) = -a(x1x2x3 + x0(x2(x3+x1)+x1x3))
 #    e = a * x0 * x1 * x2 * x3
+
+
+def rand4CoeffsWithI(coeffics):
+    for i in range(2):
+        coeffics[i] = randint(-100, 100)  # получаем 2 рандомных корня и комплексное число
+    a = randint(-100, 100)
+    coeffics.insert(0,a)
+    iy1 = complex(0,randint(-100,100))
+    coeffics[1] = coeffics[1] + iy1
+    coeffics[2] = coeffics[2] - iy1
+    iy1 = complex(0,randint(-100,100))
+
+#   [0, 1,  2 ]
+#   [a, x1, x2]
+#   [0, 1,     2,     3,     4    ]
+#   [a, x0+iy1, x0-iy1, x1+iy2, x1-iy2]
+#   a = rand()
+#   b = -2a(x0+x1)
+#   c = a(x1^2+iy2^2+x0x1+x0^2+iy1^2)
+#   d = -2a(x1^2x0 +iy2^2x0 + x1x0^2 +x1iy1^2)
+#   e = a(x1^2x0^2 +iy2^2x0^2 + x1^2iy1^2 +iy1^2iy2^2)
+
+
 
 class MyTestCase(unittest.TestCase):
     def setUp(self):
