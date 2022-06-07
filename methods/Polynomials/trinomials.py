@@ -1,6 +1,8 @@
 """This module defines different types of Trinomials and their methods."""
 from math import sqrt
 
+import numpy as np
+
 from methods.Polynomials import FixedTermPolynomials, Monomials, Polynomials, FixedDegreePolynomials, Constants
 
 
@@ -60,7 +62,10 @@ class QuadraticTrinomials(FixedDegreePolynomials, Trinomials, valid_degrees=2):
         """
         c, b, a = self._vector
         D = b * b - 4 * a * c
-        sqrtD = sqrt(D) if D >= 0 else sqrt(-D) * 1j
+        if D.__class__.__name__ == 'complex':
+            sqrtD = np.sqrt(D)
+        else:
+            sqrtD = sqrt(D) if D >= 0 else sqrt(-D) * 1j
         a = a * 2
         const = 1 / a
         return (-b + sqrtD) * const, (-b - sqrtD) * const
