@@ -67,13 +67,12 @@ coeffics = [1, 0, 0, 0]  # первый тест для всех нулевых 
 # при послед тестах вызывать методы обновления коэффициентов
 
 def rand3Coeffs(coeffics):
-    for i in range(4):
+    for i in coeffics[1:4]:
         coeffics[i] = randint(-100, 100)  # получаем 3 рандомных корня
-    a = coeffics[0]
-    b = (-1) * a * (coeffics[1] + coeffics[2] + coeffics[3])  # b
-    c = a * (coeffics[1] * coeffics[2] + coeffics[2] * coeffics[3] + coeffics[1] * coeffics[3])  # c
-    d = (-1) * a * coeffics[1] * coeffics[2] * coeffics[3]  # d
-    return [a,b,c,d]
+    b = (-1)  * (coeffics[1] + coeffics[2] + coeffics[3])  # b
+    c =  (coeffics[1] * coeffics[2] + coeffics[2] * coeffics[3] + coeffics[1] * coeffics[3])  # c
+    d = (-1)  * coeffics[1] * coeffics[2] * coeffics[3]  # d
+    return [1,b,c,d]
 
 #   [0 ,1 , 2, 3]
 #   [a, x0,x1,x2]
@@ -84,16 +83,16 @@ def rand3Coeffs(coeffics):
 
 # 1).2
 def rand3CoeffsWithI(coeffics):
-    for i in range(3):
+    for i in range(4):
         coeffics[i] = randint(-100, 100)  # получаем 2 рандомных корня и комплексное число
-    a = coeffics[0]
+    coeffics[0] = 1
     iy = complex(0,randint(-100,100))
     coeffics[2] = coeffics[2] + iy
     coeffics[3] = coeffics[2] - 2*iy
-    b = (-1) * a * (2 * coeffics[2] + coeffics[1])  # b
-    c = a * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3] + 2 * coeffics[1] * coeffics[2])  # c
-    d = (-1) * a * coeffics[1] * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3])  # d
-    return [a,b,c,d]
+    b = (-1) * (2 * coeffics[2] + coeffics[1])  # b
+    c = (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3] + 2 * coeffics[1] * coeffics[2])  # c
+    d = (-1) * coeffics[1] * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3])  # d
+    return [1,b,c,d]
 
 
 #   [0 , 1 ,2   , 3]
@@ -104,16 +103,15 @@ def rand3CoeffsWithI(coeffics):
 #    b = -2*ax1-ax0 = -a(2*x1+x0)
 
 
-coeffics2 = [0,0,0,0,0]
+coeffics2 = [1,0,0,0,0]
 def rand4Coeffs(coeffics2):
-    for i in range(5):
+    for i in coeffics[1:5]:
         coeffics2[i] = randint(-100, 100)  # получаем 4 рандомных корня
-    a = coeffics2[0]
-    b = (-1)* a * (coeffics2[1] + coeffics2[2] + coeffics2[3] + coeffics2[4])  # b
-    c = a * (coeffics2[4] * (coeffics2[3] + coeffics2[2]) + coeffics2[1]*(coeffics2[4] + coeffics2[3]+coeffics2[2]) + coeffics2[2]*coeffics2[3])  # c
-    d = (-1) * a *(coeffics2[2] * coeffics2[3] * coeffics2[4] + coeffics2[1]*(coeffics2[2]*(coeffics2[4]+coeffics2[2]) + coeffics2[2]*coeffics2[3]))  # d
-    e = a * coeffics2[0]*coeffics2[1]*coeffics2[2]*coeffics2[3]*coeffics2[4]
-    return [a,b,c,d,e]
+    b = (-1)*  (coeffics2[1] + coeffics2[2] + coeffics2[3] + coeffics2[4])  # b
+    c =  (coeffics2[4] * (coeffics2[3] + coeffics2[2]) + coeffics2[1]*(coeffics2[4] + coeffics2[3]+coeffics2[2]) + coeffics2[2]*coeffics2[3])  # c
+    d = (-1)  *(coeffics2[2] * coeffics2[3] * coeffics2[4] + coeffics2[1]*(coeffics2[2]*(coeffics2[4]+coeffics2[2]) + coeffics2[2]*coeffics2[3]))  # d
+    e = coeffics2[0]*coeffics2[1]*coeffics2[2]*coeffics2[3]*coeffics2[4]
+    return [1,b,c,d,e]
 
 #    [0, 1,  2,  3 , 4 ]
 #    [a, x0, x1, x2, x3]
@@ -175,7 +173,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
         
     def testData17(self): #17
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
+        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
 
     def testData18(self): #18
         self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
