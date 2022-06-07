@@ -41,8 +41,8 @@ def method_cardano_descartes(polynomial: Polynomials):
     c = (summand1 + summand2) * 0.5
     b = c - summand2
 
-    # roots1 = [i + const3 for i in QuadraticTrinomials(1, a, b).complex_roots]
-    # roots2 = [i + const3 for i in QuadraticTrinomials(1, -a, c).complex_roots]
-    roots1 = [i + const3 for i in np.roots([1, a, b])]
-    roots2 = [i + const3 for i in np.roots([1, -a, c])]
-    return [roots1, roots2]
+    roots1 = [i + const3 for i in QuadraticTrinomials(1, a, b).complex_roots]
+    roots2 = [i + const3 for i in QuadraticTrinomials(1, -a, c).complex_roots]
+    # roots1 = [i + const3 for i in np.roots([1, a, b])]
+    # roots2 = [i + const3 for i in np.roots([1, -a, c])]
+    return [roots1[0], roots1[1], roots2[0], roots2[1]]
