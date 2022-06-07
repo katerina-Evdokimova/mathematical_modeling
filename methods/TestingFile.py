@@ -76,7 +76,6 @@ def rand3Coeffs(coeffics):
     d = (-1) * a * coeffics[1] * coeffics[2] * coeffics[3]  # d
     return [a,b,c,d]
 
-
 #   [0 ,1 , 2, 3]
 #   [a, x0,x1,x2]
 #   d = -a*x0*x1*x2
