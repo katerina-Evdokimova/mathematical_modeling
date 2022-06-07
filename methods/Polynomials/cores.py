@@ -652,7 +652,10 @@ degree {0} of a {1}-degree polynomial".format(degree, self.degree))
         )
 
     def __len__(self):
-        return len(self._vector) - 1
+        if self._vector:
+            return len(self._vector) - 1
+        else:
+            return 0
 
     def terms_are_valid(self, terms):
         """Return true if the terms are valid."""

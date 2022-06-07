@@ -7,6 +7,7 @@ from methods import Polynomials
 # (True - if the polynomial passed the test, False - if the polynomial failed the test);
 # the second value is a polynomial with a positive outcome, with a negative error description
 def checking(polynomial: Polynomials, power):
+    print(polynomial)
     if len(polynomial) != power:
         return False, f'error length polynomial != {power}'
     if polynomial[power] != 1:
