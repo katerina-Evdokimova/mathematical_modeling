@@ -135,133 +135,133 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.bezu, coeffics)  # сперва пишем метод класса, который выводит корни,
                                                                    # затем пишем  массив с корнями для сравнения
     def testData2(self): #2
-        self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData3(self): #3
-        self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData4(self): #4
-        self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData5(self): #5
-        self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3Coeffs(coeffics))), coeffics)
     
     def testData6(self): #6
-        self.assertEqual(bezout(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData7(self):  #7
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData8(self):  #8
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData9(self):  #9
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData10(self):  #10
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData11(self):  #11
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData12(self):  #12
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData13(self):  #13
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData14(self):  #14
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData15(self):  #15
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
 
     def testData16(self):  #16
-        self.assertEqual(solve(rand3Coeffs(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3Coeffs(coeffics))), coeffics)
         
     def testData17(self): #17
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData18(self): #18
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData19(self): #19
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData20(self): #20
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData21(self): #21
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData22(self): #22
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData23(self): #23
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData24(self): #24
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData25(self): #25
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData26(self): #26
-        self.assertEqual(solve(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(solve(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData27(self): #27
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData28(self): #28
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData29(self): #29
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData30(self): #30
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData31(self): #31
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData32(self): #32
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData33(self): #33
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData34(self): #34
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData35(self): #35
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
 
     def testData36(self): #36
-        self.assertEqual(bezout(rand3CoeffsWithI(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand3CoeffsWithI(coeffics))), coeffics)
         
     def testData37(self): #37
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
 
     def testData38(self): #38
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
 
     def testData39(self): #39
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
 
     def testData40(self): #40
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
         
     def testData41(self): #41
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
 
     def testData42(self): #42
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
 
     def testData43(self): #43
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
 
     def testData44(self): #44
-        self.assertEqual(bezout(rand4Coeffs(coeffics)), coeffics)
+        self.assertEqual(bezout(Polynomial(rand4Coeffs(coeffics))), coeffics)
         
 
 
