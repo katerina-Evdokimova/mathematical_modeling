@@ -72,7 +72,7 @@ def rand3Coeffs():
     b = (-1)  * (coeffics[1] + coeffics[2] + coeffics[3])  # b
     c =  (coeffics[1] * coeffics[2] + coeffics[2] * coeffics[3] + coeffics[1] * coeffics[3])  # c
     d = (-1)  * coeffics[1] * coeffics[2] * coeffics[3]  # d
-    print(b,c,d)
+    print("rand3 = ",b,c,d)
     return [1,b,c,d]
 
 #   [0 ,1 , 2, 3]
@@ -84,16 +84,16 @@ def rand3Coeffs():
 
 # 1).2
 def rand3CoeffsWithI():
-    for i in range(4):
-        coeffics[i] = randint(-10, 10)  # получаем 2 рандомных корня и комплексное число
-    iy = complex(0,randint(-100,100))
+    for i in range(1, 3):
+        coeffics[i] = randint(-5, 5)  # получаем 2 рандомных корня и комплексное число
+    iy = complex(0.0, randint(1, 6))
     coeffics[2] = coeffics[2] + iy
-    coeffics[3] = coeffics[2] - 2*iy
-    b = (-1) * (2 * coeffics[2] + coeffics[1])  # b
-    c = (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3] + 2 * coeffics[1] * coeffics[2])  # c
-    d = (-1) * coeffics[1] * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3])  # d
-    print(b,c,d)
-    return [1,b,c,d]
+    coeffics[3] = coeffics[3] + coeffics[2] - 2 * iy
+    b = (-1) * (2 * coeffics[2].real + coeffics[1])  # b
+    c = (coeffics[2].real * coeffics[2].real + coeffics[3].imag * coeffics[3].imag + 2 * coeffics[1] * coeffics[2].real)  # c
+    d = (-1) * coeffics[1] * (coeffics[2].real * coeffics[2].real + coeffics[3].imag * coeffics[3].imag)  # d
+    print("rand3I = ",b,c,d)
+    return [1, b, c, d]
 
 
 #   [0 , 1 ,2   , 3]
@@ -107,12 +107,12 @@ def rand3CoeffsWithI():
 coeffics2 = [1,0,0,0,0]
 def rand4Coeffs():
     for i in range(1,5):
-        coeffics2[i] = randint(-10, 10)  # получаем 4 рандомных корня
+        coeffics2[i] = randint(-5, 5)  # получаем 4 рандомных корня
     b = (-1)*(coeffics2[1]+coeffics2[2]+coeffics2[3]+coeffics2[4])  # b
     c =  (coeffics2[4]*(coeffics2[3]+coeffics2[2])+coeffics2[1]*(coeffics2[4]+coeffics2[3]+coeffics2[2])+coeffics2[2]*coeffics2[3])  # c
     d = (-1)*(coeffics2[2]*coeffics2[3]*coeffics2[4]+coeffics2[1]*(coeffics2[2]*(coeffics2[4]+coeffics2[2])+coeffics2[2]*coeffics2[3]))  # d
     e = coeffics2[0]*coeffics2[1]*coeffics2[2]*coeffics2[3]*coeffics2[4]
-    print(b,c,d,e)
+    print("rand4 = ",b,c,d,e)
     return [1,b,c,d,e]
 
 #    [0, 1,  2,  3 , 4 ]
@@ -129,11 +129,11 @@ class MyTestCase(unittest.TestCase):
     def testData(self): #1 [1,-3,-9,27] коэффициенты, [1,3,3,-3] мои рандомные корни,корни photomath [3,-3,3] ,корни метода (-15.0, (9+0j), (9+0j))
         self.assertEqual(solve(Polynomials(1,-3,-9,27)), coeffics)  # сперва пишем метод класса, который выводит корни,
                                                                    # затем пишем  массив с корнями для сравнения
-    #def testData2(self): #1
-     #   self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
+    def testData2(self): #1 [-11.0 39.0 -29.0], [1, 1, (5+2j), (5-2j)], [-11.740740740740753, (11.370370370370376[57 chars]95j)], [1, а тут руками считал (5+2i),(5-2i)]
+        self.assertEqual(solve(Polynomials(rand3CoeffsWithI())), coeffics)
 
-    #def testData3(self):
-     #   self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics2)
+    def testData3(self):
+        self.assertEqual(bezout(Polynomials(rand4Coeffs())), coeffics2)
         
 
 
