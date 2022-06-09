@@ -66,9 +66,9 @@ coeffics = [1, 0, 0, 0]  # первый тест для всех нулевых 
 
 # при послед тестах вызывать методы обновления коэффициентов
 
-def rand3Coeffs(coeffics):
+def rand3Coeffs():
     for i in range(1,4):
-        coeffics[i] = randint(-10, 10)  # получаем 3 рандомных корня
+        coeffics[i] = randint(-5, 5)  # получаем 3 рандомных корня
     b = (-1)  * (coeffics[1] + coeffics[2] + coeffics[3])  # b
     c =  (coeffics[1] * coeffics[2] + coeffics[2] * coeffics[3] + coeffics[1] * coeffics[3])  # c
     d = (-1)  * coeffics[1] * coeffics[2] * coeffics[3]  # d
@@ -83,7 +83,7 @@ def rand3Coeffs(coeffics):
 #   b = -2*ax1-ax2-ax0 = -a(x1+x2+x0)
 
 # 1).2
-def rand3CoeffsWithI(coeffics):
+def rand3CoeffsWithI():
     for i in range(4):
         coeffics[i] = randint(-10, 10)  # получаем 2 рандомных корня и комплексное число
     iy = complex(0,randint(-100,100))
@@ -105,7 +105,7 @@ def rand3CoeffsWithI(coeffics):
 
 
 coeffics2 = [1,0,0,0,0]
-def rand4Coeffs(coeffics2):
+def rand4Coeffs():
     for i in range(1,5):
         coeffics2[i] = randint(-10, 10)  # получаем 4 рандомных корня
     b = (-1)*(coeffics2[1]+coeffics2[2]+coeffics2[3]+coeffics2[4])  # b
@@ -126,8 +126,8 @@ def rand4Coeffs(coeffics2):
 
 class MyTestCase(unittest.TestCase):
 
-    def testData(self): #1
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)  # сперва пишем метод класса, который выводит корни,
+    def testData(self): #1 [1,-3,-9,27] коэффициенты, [1,3,3,-3] мои рандомные корни,корни photomath [3,-3,3] ,корни метода (-15.0, (9+0j), (9+0j))
+        self.assertEqual(solve(Polynomials(1,-3,-9,27)), coeffics)  # сперва пишем метод класса, который выводит корни,
                                                                    # затем пишем  массив с корнями для сравнения
     #def testData2(self): #1
      #   self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
