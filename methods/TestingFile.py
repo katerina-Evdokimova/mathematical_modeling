@@ -67,11 +67,12 @@ coeffics = [1, 0, 0, 0]  # первый тест для всех нулевых 
 # при послед тестах вызывать методы обновления коэффициентов
 
 def rand3Coeffs(coeffics):
-    for i in coeffics[1:4]:
-        coeffics[i] = randint(-100, 100)  # получаем 3 рандомных корня
+    for i in range(1,4):
+        coeffics[i] = randint(-10, 10)  # получаем 3 рандомных корня
     b = (-1)  * (coeffics[1] + coeffics[2] + coeffics[3])  # b
     c =  (coeffics[1] * coeffics[2] + coeffics[2] * coeffics[3] + coeffics[1] * coeffics[3])  # c
     d = (-1)  * coeffics[1] * coeffics[2] * coeffics[3]  # d
+    print(b,c,d)
     return [1,b,c,d]
 
 #   [0 ,1 , 2, 3]
@@ -84,14 +85,14 @@ def rand3Coeffs(coeffics):
 # 1).2
 def rand3CoeffsWithI(coeffics):
     for i in range(4):
-        coeffics[i] = randint(-100, 100)  # получаем 2 рандомных корня и комплексное число
-    coeffics[0] = 1
+        coeffics[i] = randint(-10, 10)  # получаем 2 рандомных корня и комплексное число
     iy = complex(0,randint(-100,100))
     coeffics[2] = coeffics[2] + iy
     coeffics[3] = coeffics[2] - 2*iy
     b = (-1) * (2 * coeffics[2] + coeffics[1])  # b
     c = (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3] + 2 * coeffics[1] * coeffics[2])  # c
     d = (-1) * coeffics[1] * (coeffics[2] * coeffics[2] + coeffics[3] * coeffics[3])  # d
+    print(b,c,d)
     return [1,b,c,d]
 
 
@@ -105,12 +106,13 @@ def rand3CoeffsWithI(coeffics):
 
 coeffics2 = [1,0,0,0,0]
 def rand4Coeffs(coeffics2):
-    for i in coeffics[1:5]:
-        coeffics2[i] = randint(-100, 100)  # получаем 4 рандомных корня
-    b = (-1)*  (coeffics2[1] + coeffics2[2] + coeffics2[3] + coeffics2[4])  # b
-    c =  (coeffics2[4] * (coeffics2[3] + coeffics2[2]) + coeffics2[1]*(coeffics2[4] + coeffics2[3]+coeffics2[2]) + coeffics2[2]*coeffics2[3])  # c
-    d = (-1)  *(coeffics2[2] * coeffics2[3] * coeffics2[4] + coeffics2[1]*(coeffics2[2]*(coeffics2[4]+coeffics2[2]) + coeffics2[2]*coeffics2[3]))  # d
+    for i in range(1,5):
+        coeffics2[i] = randint(-10, 10)  # получаем 4 рандомных корня
+    b = (-1)*(coeffics2[1]+coeffics2[2]+coeffics2[3]+coeffics2[4])  # b
+    c =  (coeffics2[4]*(coeffics2[3]+coeffics2[2])+coeffics2[1]*(coeffics2[4]+coeffics2[3]+coeffics2[2])+coeffics2[2]*coeffics2[3])  # c
+    d = (-1)*(coeffics2[2]*coeffics2[3]*coeffics2[4]+coeffics2[1]*(coeffics2[2]*(coeffics2[4]+coeffics2[2])+coeffics2[2]*coeffics2[3]))  # d
     e = coeffics2[0]*coeffics2[1]*coeffics2[2]*coeffics2[3]*coeffics2[4]
+    print(b,c,d,e)
     return [1,b,c,d,e]
 
 #    [0, 1,  2,  3 , 4 ]
@@ -125,136 +127,13 @@ def rand4Coeffs(coeffics2):
 class MyTestCase(unittest.TestCase):
 
     def testData(self): #1
-        self.assertEqual(bezout(Polynomials(rand3Coeffs(coeffics))), coeffics)  # сперва пишем метод класса, который выводит корни,
+        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)  # сперва пишем метод класса, который выводит корни,
                                                                    # затем пишем  массив с корнями для сравнения
-    def testData2(self): #2
-        self.assertEqual(bezout(Polynomials(rand3Coeffs(coeffics))), coeffics)
+    #def testData2(self): #1
+     #   self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
 
-    def testData3(self): #3
-        self.assertEqual(bezout(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData4(self): #4
-        self.assertEqual(bezout(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData5(self): #5
-        self.assertEqual(bezout(Polynomials(rand3Coeffs(coeffics))), coeffics)
-    
-    def testData6(self): #6
-        self.assertEqual(bezout(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData7(self):  #7
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData8(self):  #8
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData9(self):  #9
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData10(self):  #10
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData11(self):  #11
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData12(self):  #12
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData13(self):  #13
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData14(self):  #14
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData15(self):  #15
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData16(self):  #16
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-        
-    def testData17(self): #17
-        self.assertEqual(solve(Polynomials(rand3Coeffs(coeffics))), coeffics)
-
-    def testData18(self): #18
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData19(self): #19
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData20(self): #20
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData21(self): #21
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData22(self): #22
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData23(self): #23
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData24(self): #24
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData25(self): #25
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData26(self): #26
-        self.assertEqual(solve(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData27(self): #27
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData28(self): #28
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData29(self): #29
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData30(self): #30
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData31(self): #31
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData32(self): #32
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData33(self): #33
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData34(self): #34
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData35(self): #35
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-
-    def testData36(self): #36
-        self.assertEqual(bezout(Polynomials(rand3CoeffsWithI(coeffics))), coeffics)
-        
-    def testData37(self): #37
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-
-    def testData38(self): #38
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-
-    def testData39(self): #39
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-
-    def testData40(self): #40
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-        
-    def testData41(self): #41
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-
-    def testData42(self): #42
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-
-    def testData43(self): #43
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
-
-    def testData44(self): #44
-        self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics)
+    #def testData3(self):
+     #   self.assertEqual(bezout(Polynomials(rand4Coeffs(coeffics2))), coeffics2)
         
 
 
